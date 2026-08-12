@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: AuthZGuard Training API
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      responses:
+        '200': { description: Health status }
+  /v1/admin:
+    get:
+      responses:
+        '403': { description: Forbidden to anonymous requests }
+

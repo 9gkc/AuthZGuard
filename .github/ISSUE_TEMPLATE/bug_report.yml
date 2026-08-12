@@ -1,0 +1,26 @@
+name: Bug report
+description: Report a reproducible defect in AuthZGuard without publishing target details or secrets.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include tokens, proprietary URLs, response bodies, customer data, or vulnerability details in a public issue."
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected safe behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior using a local or redacted reproduction
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: AuthZGuard version
+    validations:
+      required: true
+

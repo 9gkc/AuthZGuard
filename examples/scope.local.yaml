@@ -1,0 +1,9 @@
+authorization:
+  attestation: I_HAVE_WRITTEN_AUTHORIZATION
+  reference: "LOCAL-TRAINING-ONLY"
+request_policy:
+  minimum_interval_ms: 250
+targets:
+  - base_url: http://localhost:8080
+    allow_private_network: false
+    allow_authorized_public_target: false

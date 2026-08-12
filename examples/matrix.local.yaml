@@ -1,0 +1,18 @@
+identities:
+  anonymous: null
+checks:
+  - id: anonymous-must-not-read-admin
+    target: http://localhost:8080
+    method: GET
+    path: /v1/admin
+    identity: anonymous
+    expected_statuses: [401, 403]
+    rationale: "Administrative data must not be available without a test identity."
+  - id: anonymous-can-read-health
+    target: http://localhost:8080
+    method: GET
+    path: /health
+    identity: anonymous
+    expected_statuses: [200]
+    rationale: "The approved health endpoint is intentionally public."
+
