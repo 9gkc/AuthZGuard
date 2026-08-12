@@ -9,4 +9,4 @@
 - [x] Build a local, intentionally vulnerable training API and a safe demonstration configuration.
 - [x] Write automated tests for scope enforcement, matrix validation, safe request rules, and report generation.
 - [x] Publish professional documentation, governance files, release workflow, and a responsible-use security notice.
-- [ ] Push the verified release to GitHub and add AuthZGuard to the 9gkc profile repository.
+- [x] Push the verified release to GitHub and add AuthZGuard to the 9gkc profile repository.
