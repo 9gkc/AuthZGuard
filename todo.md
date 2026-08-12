@@ -10,3 +10,6 @@
 - [x] Write automated tests for scope enforcement, matrix validation, safe request rules, and report generation.
 - [x] Publish professional documentation, governance files, release workflow, and a responsible-use security notice.
 - [x] Push the verified release to GitHub and add AuthZGuard to the 9gkc profile repository.
+- [x] Design a static GitHub Pages guide for AuthZGuard that presents the tool without executing any remote scan.
+- [x] Build a responsive direct-demo page with authorized-use safeguards, configuration examples, report previews, and installation guidance.
+- [ ] Add a GitHub Pages deployment workflow, publish the site, verify the direct URL, and update the 9gkc profile link.
