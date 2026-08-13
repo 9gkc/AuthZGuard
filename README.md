@@ -4,6 +4,12 @@
 
 AuthZGuard verifies a **declared** authorization matrix against a deliberately approved API target. It is designed for application-security teams, platform engineers, and authorized security researchers who need low-impact evidence that an API returns the expected authorization boundary for a known identity and route.
 
+## Project preview
+
+![AuthZGuard public guide showing defensive authorization verification, an explicit written-authorization attestation, safe-method constraints, and non-executing command preview](docs/images/authzguard-authorized-preview.webp)
+
+**[Open the interactive project guide](https://9gkc.github.io/AuthZGuard/)** for an overview of the scope-first workflow and reporting model. The guide is presentation-only: it does not send requests, store credentials, or scan a remote system.
+
 ## Responsible-use boundary
 
 AuthZGuard is not an exploitation framework, crawler, credential harvester, or public-target discovery tool. It deliberately limits network checks to `GET`, `HEAD`, and `OPTIONS`; requires an explicit, machine-readable scope; requires a written-authorization attestation; records no response bodies; and blocks public targets unless the scope and command line both opt in. **Do not use it against a system, account, tenant, or endpoint without written authorization from the system owner.**
@@ -118,4 +124,3 @@ python -m unittest discover -s tests -v
 ## License
 
 MIT. See [LICENSE](LICENSE).
-
