@@ -1,6 +1,33 @@
-# Contributing
+# Contributing to AuthZGuard
 
-Contributions are welcome when they keep AuthZGuard focused on authorized, low-impact authorization regression testing.
+Thank you for helping improve AuthZGuard.
 
-Before opening a pull request, add or update tests, run `python -m unittest discover -s tests -v`, avoid live targets in fixtures or documentation, and ensure no token, target, or response body is committed. Changes that add unsafe methods, automatic discovery, credential acquisition, response-body collection, or public-target defaults will not be accepted.
+## Scope
 
+AuthZGuard is a defensive authorization regression testing tool. Contributions must respect the following boundaries:
+
+- Only test against systems you own or have explicit permission to test
+- Prefer safe, deterministic, and explainable checks
+- Do not introduce destructive or intrusive behavior
+- Keep credential handling minimal and secure
+
+## Development Standards
+
+- Use clear names and small cohesive changes
+- Maintain accessible and readable code
+- Never commit secrets, tokens, or personal data
+- Update documentation when behavior changes
+- Keep all project content in English
+
+## Validation
+
+Before opening a pull request, run the project’s tests and checks. A good pull request describes:
+
+- The problem being solved
+- The solution
+- Validation performed
+- Any known limitations
+
+## Security Reports
+
+Please follow the process in [SECURITY.md](SECURITY.md) instead of posting sensitive details publicly.
