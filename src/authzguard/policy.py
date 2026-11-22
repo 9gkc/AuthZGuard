@@ -78,15 +78,26 @@ def parse_scope(document: dict) -> Scope:
     return Scope(reference=reference, targets=tuple(rules), minimum_interval_ms=minimum_interval_ms)
 
 
+def is_restricted_address(address: str) -> bool:
+    """Return True for loopback, private, link-local, CGNAT, or multicast addresses."""
+    candidate = ipaddress.ip_address(address)
+    if candidate.is_loopback or candidate.is_private or candidate.is_link_local or candidate.is_multicast:
+        return True
+    # Carrier-grade NAT (100.64.0.0/10)
+    if isinstance(candidate, ipaddress.IPv4Address):
+        if ipaddress.IPv4Address("100.64.0.0") <= candidate <= ipaddress.IPv4Address("100.127.255.255"):
+            return True
+    return False
+
+
 def host_resolves_to_private_address(host: str) -> bool:
-    """Block DNS rebinding toward loopback, private, or link-local addresses."""
+    """Block DNS rebinding toward loopback, private, CGNAT, or link-local addresses."""
     try:
         addresses = {record[4][0] for record in socket.getaddrinfo(host, None, type=socket.SOCK_STREAM)}
     except socket.gaierror as error:
         raise ScopeViolation(f"Cannot resolve target host: {host}") from error
     for address in addresses:
-        candidate = ipaddress.ip_address(address)
-        if candidate.is_loopback or candidate.is_private or candidate.is_link_local:
+        if is_restricted_address(address):
             return True
     return False
 
@@ -102,7 +113,7 @@ def enforce_request_policy(scope: Scope, url: str, method: str, permit_authorize
     try:
         address = ipaddress.ip_address(host)
         is_local = address.is_loopback
-        is_private = address.is_private or address.is_link_local
+        is_private = is_restricted_address(host)
     except ValueError:
         is_private = host_resolves_to_private_address(host)
     if parsed.scheme != "https" and not is_local:
